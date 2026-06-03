@@ -1,0 +1,33 @@
+# Python字节码
+__pycache__/
+*.pyc
+*.pyo
+
+# Python虚拟环境
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 测试报告产物
+test-results/
+.pytest_cache/
+reports/
+*.xml
+
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# WorkBuddy内部文件
+.workbuddy/
+
+# 临时文件
+*.tmp
+*.log
+nul
