@@ -1,5 +1,5 @@
-# Python+Requests 接口自动化测试 - CI/CD 流水线
-# 功能：代码推送后自动运行所有接口测试，生成报告，失败时发通知
+# Python+Requests 接口自动化测试 - CI/CD 流水线 v2
+# 修复：创建目录、容错处理、网络超时
 
 name: API Test CI
 
@@ -32,15 +32,52 @@ jobs:
       - name: 📦 安装依赖
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install requests>=2.31.0 pytest>=7.4.0 pytest-cov openpyxl fake-useragent
 
-      - name: 🧪 运行 Day5-14 接口自动化测试（pytest）
+      - name: 📁 创建输出目录
+        run: mkdir -p test-results reports
+
+      - name: 🧪 运行接口自动化测试（pytest）
         id: run_tests
         continue-on-error: true
         run: |
           echo "============ 开始运行接口自动化测试 ============"
-          python -m pytest requests_day5.py requests_day6.py requests_day7.py requests_day8.py requests_day9.py requests_day10.py requests_day11.py requests_day12.py requests_day13.py requests_day14.py -v --tb=short --junitxml=test-results/junit.xml 2>&1 | tee test-results/pytest-log.txt
-          echo "exit_code=${PIPESTATUS[0]}" >> $GITHUB_OUTPUT
+          echo ""
+          echo "可用测试文件:"
+          ls requests_day*.py 2>/dev/null || echo "无requests_day*.py文件"
+          echo ""
+
+          # 运行测试，设置超时和重试
+          python -m pytest \
+            requests_day5.py \
+            requests_day6.py \
+            requests_day7.py \
+            requests_day8.py \
+            requests_day9.py \
+            requests_day10.py \
+            requests_day11.py \
+            requests_day12.py \
+            requests_day13.py \
+            requests_day14.py \
+            -v --tb=short \
+            --timeout=60 \
+            -o addopts="" \
+            2>&1 | tee test-results/pytest-log.txt || true
+
+          # 统计结果
+          if [ -f test-results/pytest-log.txt ]; then
+            PASSED=$(grep -c "PASSED" test-results/pytest-log.txt || echo "0")
+            FAILED=$(grep -c "FAILED\|ERROR" test-results/pytest-log.txt || echo "0")
+            TOTAL=$(($PASSED + $FAILED))
+            echo "passed=$PASSED failed=$FAILED total=$TOTAL" >> $GITHUB_OUTPUT
+            echo ""
+            echo "============ 测试结果统计 ============"
+            echo "通过: $PASSED"
+            echo "失败: $FAILED"
+            echo "总计: $TOTAL"
+          else
+            echo "passed=0 failed=-1 total=0" >> $GITHUB_OUTPUT
+          fi
           echo "============ 测试运行完成 ============"
 
       - name: 📊 生成测试摘要
@@ -50,10 +87,11 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**运行时间**: $(date '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+
           if [ -f test-results/pytest-log.txt ]; then
-            echo "### 测试输出（最后50行）" >> $GITHUB_STEP_SUMMARY
+            echo '### 测试日志' >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
-            tail -50 test-results/pytest-log.txt >> $GITHUB_STEP_SUMMARY
+            cat test-results/pytest-log.txt >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
           fi
 
@@ -65,12 +103,14 @@ jobs:
           path: test-results/
           retention-days: 30
 
-      - name: ✅ 测试通过
-        if: steps.run_tests.outcome == 'success'
-        run: echo "🎉 所有接口测试通过！"
-
-      - name: ❌ 测试失败
-        if: steps.run_tests.outcome == 'failure'
+      - name: ✅ 测试通过检查
+        if: steps.run_tests.outputs.failed == '0'
         run: |
-          echo "❌ 部分接口测试失败，请查看上方日志"
+          echo "🎉 所有接口测试通过！"
+          echo "通过数: {{ steps.run_tests.outputs.passed }}"
+
+      - name: ⚠️ 测试部分失败
+        if: steps.run_tests.outputs.failed != '0'
+        run: |
+          echo "⚠️ 部分测试未通过，请查看上方日志详情"
           exit 1
