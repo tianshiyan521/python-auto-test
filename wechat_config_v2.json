@@ -1,0 +1,81 @@
+{
+  "reply_rules": [
+    {
+      "keywords": ["你好", "在吗", "hello", "hi", "哈喽", "嗨"],
+      "reply": "你好！我是自动回复助手，主人暂时不在，有事请留言~",
+      "enabled": true
+    },
+    {
+      "keywords": ["谢谢", "thank you", "thanks", "3Q", "谢啦", "thx"],
+      "reply": "不客气！主人回来后会看到你的消息的。",
+      "enabled": true
+    },
+    {
+      "keywords": ["什么时候回来", "几点回来", "多久回来", "在不在", "回来了吗"],
+      "reply": "主人大概晚上6点后回来，我会转告他/她联系你。",
+      "enabled": true
+    },
+    {
+      "keywords": ["急事", "紧急", "urgent", "快点", "速回", "马上"],
+      "reply": "⚠️ 收到紧急消息！已经通过短信通知主人，请稍等。",
+      "enabled": true
+    },
+    {
+      "keywords": ["吃饭", "吃饭了吗", "吃了吗", "午饭", "晚饭", "饿了吗"],
+      "reply": "主人正在忙，还没吃饭呢~ 你吃了吗？",
+      "enabled": true
+    },
+    {
+      "keywords": ["工作", "上班", "加班", "忙吗", "在忙吗"],
+      "reply": "主人正在工作中，稍后会回复你。",
+      "enabled": true
+    },
+    {
+      "keywords": ["晚上", "晚上好", "晚安", "good night", "睡了"],
+      "reply": "晚上好！主人可能已经休息了，明天回复你哦。",
+      "enabled": true
+    },
+    {
+      "keywords": ["周末", "周六", "周日", "放假", "休息"],
+      "reply": "周末愉快！主人可能在休息，稍后回复。",
+      "enabled": true
+    },
+    {
+      "keywords": ["约饭", "吃饭去", "聚餐", "火锅", "烧烤"],
+      "reply": "好啊！等主人回来告诉他/她，他/她喜欢吃火锅~",
+      "enabled": true
+    },
+    {
+      "keywords": ["多少钱", "价格", "费用", "how much"],
+      "reply": "价格问题需要主人回来确认，稍后回复你。",
+      "enabled": true
+    }
+  ],
+  "auto_reply_settings": {
+    "enabled": true,
+    "reply_to_friends": true,
+    "reply_to_strangers": false,
+    "reply_to_groups": false,
+    "max_reply_per_conversation": 3,
+    "working_hours": {
+      "start": "09:00",
+      "end": "22:00"
+    }
+  },
+  "login_settings": {
+    "hot_reload": true,
+    "status_storage_dir": "itchat.pkl",
+    "enable_cmd_qr": true,
+    "qr_callback": null,
+    "login_callback": null,
+    "exit_callback": null
+  },
+  "greeting_message": "🤖 自动回复已启用\\n时间: {time}\\n状态: 工作中",
+  "debug_mode": false,
+  "system_settings": {
+    "auto_save_history": true,
+    "history_file": "wechat_history_v2.json",
+    "save_interval_minutes": 30,
+    "log_level": "INFO"
+  }
+}

@@ -1,0 +1,9 @@
+test_id,skill_name,damage_range,target_count,expected_hit,description
+TC_COMBAT_101,普通攻击,1-100,1,True,基础-单体普攻
+TC_COMBAT_102,烈火斩,50-150,1,True,单体-中伤害技能
+TC_COMBAT_103,旋风斩,30-80,3,True,群体-多目标AOE
+TC_COMBAT_104,治疗术,-50--30,1,True,辅助-单体治疗（负伤害=回血）
+TC_COMBAT_105,闪电链,40-120,5,True,群体-连锁闪电
+TC_COMBAT_106,防御姿态,0-0,0,False,防御-无伤害技能
+TC_COMBAT_107,致命一击,200-500,1,True,单体-高伤害暴击
+TC_COMBAT_108,毒雾,10-30,10,True,群体-大范围DOT

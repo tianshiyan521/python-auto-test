@@ -1,0 +1,6 @@
+scene,method,path,username,password,expected_status,expected_key
+正常GET请求,GET,/get,,,200,url
+带参数GET,GET,/get,admin,dummy,200,args
+正常POST请求,POST,/post,admin,123456,200,json
+空Body POST,POST,/post,,,200,data
+DELETE请求,DELETE,/delete,,,200,url
