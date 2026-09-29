@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>接口测试练习台 · 第1课</title>
+<style>
+  :root{
+    --bg:#f4f6fa; --card:#ffffff; --line:#e2e8f0; --line2:#eef2f7;
+    --txt:#1e2937; --dim:#697586; --accent:#2563eb; --ok:#16a34a;
+    --bad:#dc2626; --warn:#d97706; --mono:"Consolas","Cascadia Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--txt);
+    font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif; font-size:14px}
+
+  header{padding:14px 22px 12px; background:#fff; border-bottom:1px solid var(--line);
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+  header h1{margin:0; font-size:18px}
+  header .sub{color:var(--dim); font-size:13px}
+  #modeTag{font-size:12px; padding:3px 11px; border-radius:999px; font-weight:600;
+    background:#fff7e6; color:#b45309; border:1px solid #fde3b3}
+  #modeTag.live{background:#eafaf0; color:#15803d; border-color:#b7ebc9}
+
+  .guide{background:#eef4ff; border-bottom:1px solid #d7e4ff; color:#1d4ed8;
+    padding:9px 22px; font-size:13px}
+  .guide b{background:#2563eb; color:#fff; padding:1px 7px; border-radius:4px;
+    font-size:12px; margin-right:6px}
+
+  .status{display:flex; gap:10px; flex-wrap:wrap; padding:11px 22px; background:#fff;
+    border-bottom:1px solid var(--line); align-items:center}
+  .status .field{display:flex; align-items:center; gap:6px; font-size:13px}
+  .status label{color:var(--dim)}
+  .status input{background:#f8fafc; border:1px solid var(--line); color:var(--txt);
+    padding:5px 9px; border-radius:6px; font-family:var(--mono); font-size:13px}
+  .status input#tok{width:150px}
+  .status input#lv{width:56px; text-align:center}
+  .chip{background:#f1f5f9; border:1px solid var(--line); border-radius:999px;
+    padding:4px 12px; font-family:var(--mono); font-size:13px; color:var(--dim)}
+  .chip b{color:var(--accent)}
+
+  .wrap{display:grid; grid-template-columns:minmax(350px,420px) 1fr;
+    height:calc(100vh - 215px); min-height:420px}
+  @media (max-width:900px){ .wrap{grid-template-columns:1fr; height:auto} }
+
+  .left{padding:14px 16px; overflow:auto; background:#fff; border-right:1px solid var(--line)}
+  .card{background:#fff; border:1px solid var(--line); border-radius:10px;
+    padding:12px 14px; margin-bottom:11px; transition:.15s}
+  .card:hover{border-color:#c7d6ea; box-shadow:0 2px 10px rgba(37,99,235,.07)}
+  .card h3{margin:0 0 7px; font-size:14px; display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+  .badge{font-family:var(--mono); font-size:11px; padding:2px 7px; border-radius:4px;
+    background:#eff6ff; color:var(--accent); border:1px solid #cfe0ff; font-weight:400}
+  .badge.post{background:#fff7ed; color:var(--warn); border-color:#fde3c2}
+  .card .desc{color:var(--dim); font-size:12.5px; margin:0 0 9px; line-height:1.6}
+  .row{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+  input[type=text],input[type=password],select{
+    background:#f8fafc; border:1px solid var(--line); color:var(--txt);
+    padding:6px 10px; border-radius:6px; font-family:var(--mono); font-size:13px;
+    flex:1; min-width:80px}
+  input:focus,select:focus{outline:none; border-color:var(--accent); background:#fff}
+  button{background:var(--accent); color:#fff; border:0; border-radius:6px;
+    padding:7px 16px; font-size:13px; font-weight:600; cursor:pointer;
+    font-family:inherit; transition:.15s}
+  button:hover{background:#1d4ed8}
+  button:active{transform:translateY(1px)}
+  button.ghost{background:#fff; color:var(--dim); border:1px solid var(--line); font-weight:400}
+  button.ghost:hover{color:var(--accent); border-color:var(--accent); background:#fff}
+
+  .right{display:flex; flex-direction:column; overflow:hidden}
+  .loghead{padding:10px 18px; border-bottom:1px solid var(--line); display:flex;
+    justify-content:space-between; align-items:center; background:#fafbfd;
+    font-size:13px; color:var(--dim)}
+  #log{flex:1; overflow:auto; padding:14px 18px}
+  .empty{color:var(--dim); text-align:center; padding:46px 20px; line-height:2.1}
+  .empty .big{font-size:32px; display:block; margin-bottom:10px}
+
+  .entry{border:1px solid var(--line); border-left:3px solid var(--dim); border-radius:8px;
+    padding:11px 14px; margin-bottom:11px; background:#fff; animation:fade .25s}
+  @keyframes fade{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+  .entry.ok{border-left-color:var(--ok)}
+  .entry.bad{border-left-color:var(--bad)}
+  .entry .top{display:flex; gap:10px; align-items:center; font-family:var(--mono);
+    font-size:12.5px; margin-bottom:4px}
+  .method{padding:2px 7px; border-radius:4px; font-weight:700; font-size:11px}
+  .method.GET{background:#e8f7ee; color:#15803d}
+  .method.POST{background:#fff3e0; color:#b45309}
+  .entry .time{color:#9aa6b6; margin-left:auto; font-size:11.5px}
+  .lbl{color:var(--dim); font-size:11.5px; margin:8px 0 4px; letter-spacing:.4px}
+  pre{margin:0; background:#f8fafc; border:1px solid var(--line2); border-radius:6px;
+    padding:9px 11px; font-family:var(--mono); font-size:12.5px; line-height:1.55;
+    overflow-x:auto; white-space:pre-wrap; word-break:break-all; color:#334155}
+  .verdict{margin-top:9px; padding:7px 11px; border-radius:6px; font-size:13px; line-height:1.5}
+  .verdict.ok{background:#eafaf0; color:#15803d; border:1px solid #b7ebc9}
+  .verdict.bad{background:#fdeeee; color:#b91c1c; border:1px solid #f5c6c6}
+  .curl{margin-top:8px}
+  .curl code{background:#f1f5f9; border:1px solid var(--line); border-radius:6px;
+    padding:7px 10px; font-family:var(--mono); font-size:11.5px; color:#2563eb;
+    display:block; overflow-x:auto; white-space:nowrap; cursor:pointer}
+  .curl code:hover{border-color:var(--accent); background:#e8f0fe}
+
+  .tasks{padding:11px 22px 16px; border-top:1px solid var(--line); background:#fff}
+  .tasks .h{font-size:12.5px; color:var(--dim); margin-bottom:8px}
+  .tasks .list{display:flex; gap:7px; flex-wrap:wrap}
+  .task{border:1px solid var(--line); border-radius:999px; padding:4px 12px;
+    font-size:12.5px; color:var(--dim); background:#f8fafc; transition:.2s}
+  .task.done{border-color:#b7ebc9; color:#15803d; background:#eafaf0; font-weight:600}
+  .task.done::before{content:"✓ "}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🦕 接口测试练习台</h1>
+  <span class="sub">第 1 课 · 双击就能玩</span>
+  <span id="modeTag" style="margin-left:auto">检测中…</span>
+</header>
+
+<div class="guide">
+  <b>怎么玩</b>左边四个卡片，从上往下依次点「发送」→ 每点一次，右边就多一条「发了什么 / 回了什么」
+</div>
+
+<div class="status">
+  <div class="field"><label>token</label><input type="text" id="tok" value="tk_abc123"></div>
+  <div class="field"><label>等级</label><input type="text" id="lv" value="5" readonly></div>
+  <div class="chip">金币 <b id="gold">-</b></div>
+  <div class="chip">已领 <b id="claimed">无</b></div>
+  <button class="ghost" onclick="doReset()">重置数据</button>
+</div>
+
+<div class="wrap">
+  <div class="left">
+
+    <div class="card">
+      <h3>① 登录 <span class="badge post">POST /api/login</span></h3>
+      <p class="desc">账号密码换一张通行证（token），后面所有操作都要带着它。</p>
+      <div class="row">
+        <input type="text" id="user" value="test01">
+        <input type="password" id="pwd" value="123456">
+        <button onclick="doLogin()">发送</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>② 查角色信息 <span class="badge">GET /api/role/info</span></h3>
+      <p class="desc">看当前等级和金币。参数拼在网址后面（?token=xxx）。</p>
+      <div class="row"><button onclick="doRoleInfo()">发送</button></div>
+    </div>
+
+    <div class="card">
+      <h3>③ 领奖励 <span class="badge post">POST /api/reward/claim</span></h3>
+      <p class="desc">新手礼包谁都能领 · 王者礼包要 10 级 · 同一个礼包只能领一次。</p>
+      <div class="row">
+        <select id="rid">
+          <option value="1">1 - 新手礼包（+100 金币）</option>
+          <option value="2">2 - 王者礼包（+1000 金币，需 10 级）</option>
+        </select>
+        <button onclick="doClaim()">发送</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>④ GM 工具 <span class="badge post">POST /api/gm/set_level</span></h3>
+      <p class="desc">跟你平时用后台改数据一样。改成 <b style="color:var(--accent)">20</b>，再回去领王者礼包。</p>
+      <div class="row">
+        <input type="text" id="newlv" value="20">
+        <button onclick="doSetLevel()">改等级</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="right">
+    <div class="loghead">
+      <span>请求日志（最新在最上面）</span>
+      <button class="ghost" onclick="document.getElementById('log').innerHTML='';showEmpty()">清空</button>
+    </div>
+    <div id="log"></div>
+  </div>
+</div>
+
+<div class="tasks">
+  <div class="h">通关清单 —— 7 个全变绿，你就明白接口测试在干嘛了</div>
+  <div class="list" id="tasks"></div>
+</div>
+
+<script>
+/* =====================================================================
+   内置的「假游戏服务端」
+   逻辑跟真的一模一样。这样不用开 Python、不用占端口，双击网页就能练。
+   （想连真服务端，双击同目录的 启动.bat，页面会自动切过去）
+   ===================================================================== */
+const MOCK = (function(){
+  function fresh(){
+    return {
+      user:{username:"test01", password:"123456", token:"tk_abc123",
+            name:"小涂的恐龙", level:5, gold:1000},
+      claimed:[]
+    };
+  }
+  let db = fresh();
+  const REWARDS = {
+    1:{name:"新手礼包", need_level:0,  gold:100},
+    2:{name:"王者礼包", need_level:10, gold:1000}
+  };
+  const ok  = (data) => ({http:200, json:{code:0, msg:"ok", data:data || {}}});
+  const err = (code, msg, http) => ({http:http || 200, json:{code:code, msg:msg}});
+
+  function state(){
+    const u = db.user;
+    return {token:u.token, name:u.name, level:u.level, gold:u.gold, claimed:db.claimed.slice()};
+  }
+
+  function handle(method, path, p){
+    p = p || {};
+    if(method === "GET"){
+      if(path === "/api/ping")  return ok({server:"ok"});
+      if(path === "/api/state") return ok(state());
+      if(path === "/api/role/info"){
+        if(!p.token)                  return err(20001, "缺少 token");
+        if(p.token !== db.user.token) return err(10002, "token 无效或已过期");
+        const u = db.user;
+        return ok({name:u.name, level:u.level, gold:u.gold});
+      }
+    }else{
+      if(path === "/api/login"){
+        const username = String(p.username || "").trim();
+        const password = String(p.password || "");
+        if(!username || !password) return err(20001, "username 和 password 都是必填的");
+        const u = db.user;
+        if(username !== u.username || password !== u.password)
+          return err(10001, "账号或密码错误");
+        return ok({token:u.token, name:u.name, level:u.level, gold:u.gold});
+      }
+      if(path === "/api/reward/claim"){
+        if(!p.token)                  return err(20001, "缺少 token");
+        if(p.token !== db.user.token) return err(10002, "token 无效或已过期");
+        let rid = p.rewardId;
+        if(rid === undefined || rid === null || rid === "")
+          return err(20001, "rewardId 是必填的");
+        rid = Number(rid);
+        if(!Number.isFinite(rid)) return err(20002, "rewardId 必须是数字");
+        if(!REWARDS[rid])         return err(20002, "rewardId 不存在");
+        const cfg = REWARDS[rid], u = db.user;
+        if(u.level <= cfg.need_level)
+          return err(50002, cfg.name + "需要 " + cfg.need_level + " 级，你当前 " + u.level + " 级");
+        if(db.claimed.indexOf(rid) >= 0)
+          return err(50003, cfg.name + "已经领过了");
+        db.claimed.push(rid);
+        u.gold += cfg.gold;
+        return ok({rewardName:cfg.name, rewardGold:cfg.gold, gold:u.gold});
+      }
+      if(path === "/api/gm/set_level"){
+        const lv = Number(p.level);
+        if(!Number.isFinite(lv)) return err(20001, "level 必须是数字");
+        db.user.level = lv;
+        return ok({level:lv});
+      }
+      if(path === "/api/gm/reset"){ db = fresh(); return ok({msg:"已重置"}); }
+    }
+    return err(40400, "没有这个接口: " + path, 404);
+  }
+
+  return {handle:handle, state:state, reset:function(){ db = fresh(); }};
+})();
+
+/* ===================== 页面逻辑 ===================== */
+const TASKS = [
+  {id:1, txt:"成功登录一次"},
+  {id:2, txt:"查到角色信息"},
+  {id:3, txt:"领到新手礼包"},
+  {id:4, txt:"触发「已领取过」报错"},
+  {id:5, txt:"触发「等级不足」报错"},
+  {id:6, txt:"改等级后领到王者礼包"},
+  {id:7, txt:"用错的 token 触发鉴权失败"}
+];
+const done = new Set();
+let MODE = "mock";                        // mock = 内置服务端；live = 真服务端
+const API_BASE = "http://127.0.0.1:8899"; // 复制 curl 时用的地址
+
+function renderTasks(){
+  document.getElementById("tasks").innerHTML = TASKS.map(function(t){
+    return '<div class="task ' + (done.has(t.id) ? "done" : "") + '">' + t.txt + "</div>";
+  }).join("");
+}
+function pass(id){ if(!done.has(id)){ done.add(id); renderTasks(); } }
+
+function showEmpty(){
+  document.getElementById("log").innerHTML =
+    '<div class="empty"><span class="big">👈</span>' +
+    "还没发过任何请求。<br>去左边点第一个卡片里的「发送」试试。</div>";
+}
+function nowTime(){
+  const d = new Date(), p = function(n){ return String(n).padStart(2, "0"); };
+  return p(d.getHours()) + ":" + p(d.getMinutes()) + ":" + p(d.getSeconds());
+}
+function escapeHtml(s){
+  return String(s).replace(/[&<>]/g, function(c){
+    return {"&":"&amp;", "<":"&lt;", ">":"&gt;"}[c];
+  });
+}
+function token(){ return document.getElementById("tok").value.trim(); }
+function toast(msg){
+  const d = document.createElement("div");
+  d.textContent = msg;
+  d.style.cssText = "position:fixed;bottom:70px;left:50%;transform:translateX(-50%);" +
+    "background:#2563eb;color:#fff;padding:9px 20px;border-radius:8px;font-weight:600;" +
+    "z-index:99;box-shadow:0 4px 16px rgba(37,99,235,.35)";
+  document.body.appendChild(d);
+  setTimeout(function(){ d.remove(); }, 1800);
+}
+
+/* ---- 发请求：真实模式走 fetch，离线模式走内置服务端 ---- */
+async function api(method, path, params){
+  let out;
+  if(MODE === "live"){
+    let url = path, body;
+    if(method === "GET"){
+      const q = new URLSearchParams(params).toString();
+      if(q) url += "?" + q;
+    }else{
+      body = JSON.stringify(params);
+    }
+    const res = await fetch(url, {
+      method: method,
+      headers: method === "POST" ? {"Content-Type":"application/json"} : {},
+      body: body
+    });
+    let json = null;
+    try{ json = await res.json(); }catch(e){}
+    out = {http:res.status, json:json};
+  }else{
+    await new Promise(function(r){ setTimeout(r, 110); });   // 假装走了下网络
+    out = MOCK.handle(method, path, params);
+  }
+  addLog({method:method, path:path, params:params, http:out.http, json:out.json});
+  refreshState();
+  return out;
+}
+
+function buildCurl(o){
+  if(o.method === "GET"){
+    const q = new URLSearchParams(o.params).toString();
+    return 'curl "' + API_BASE + o.path + (q ? "?" + q : "") + '"';
+  }
+  return 'curl -X POST "' + API_BASE + o.path + '" -H "Content-Type: application/json" -d \''
+    + JSON.stringify(o.params) + "'";
+}
+function copyCurl(el){
+  const t = el.textContent.replace(/^复制成 curl：/, "");
+  navigator.clipboard.writeText(t).then(function(){
+    const old = el.style.color;
+    el.style.color = "#16a34a";
+    setTimeout(function(){ el.style.color = old; }, 900);
+  });
+}
+
+function addLog(o){
+  const ok = o.json && o.json.code === 0;
+  const ep = document.createElement("div");
+  ep.className = "entry " + (ok ? "ok" : "bad");
+
+  let verdict;
+  if(ok){
+    verdict = "✅ 接口正常干活了（code = 0）";
+  }else{
+    const code = o.json ? o.json.code : o.http;
+    const msg  = o.json ? o.json.msg : "返回的不是 JSON";
+    verdict = "❌ 这是一条「失败用例」： code = " + code + " · " + msg;
+  }
+
+  const shownReq = o.method === "GET"
+    ? o.path + (Object.keys(o.params).length ? "?" + new URLSearchParams(o.params) : "")
+    : JSON.stringify(o.params, null, 2);
+
+  ep.innerHTML =
+    '<div class="top"><span class="method ' + o.method + '">' + o.method + "</span>" +
+    "<span>" + o.path + '</span><span class="time">' + nowTime() + "</span></div>" +
+    '<div class="lbl">① 你发出去的（请求）</div>' +
+    "<pre>" + escapeHtml(shownReq) + "</pre>" +
+    '<div class="lbl">② 服务端回的（响应）</div>' +
+    "<pre>HTTP " + o.http + "\n" + escapeHtml(o.json ? JSON.stringify(o.json, null, 2) : "(非 JSON)") + "</pre>" +
+    '<div class="verdict ' + (ok ? "ok" : "bad") + '">' + verdict + "</div>" +
+    '<div class="curl"><code onclick="copyCurl(this)" title="点一下复制">' +
+      escapeHtml("复制成 curl：" + buildCurl(o)) + "</code></div>";
+
+  const log = document.getElementById("log");
+  log.insertBefore(ep, log.firstChild);
+}
+
+/* ---- 四个按钮 ---- */
+async function doLogin(){
+  const r = await api("POST", "/api/login", {
+    username: document.getElementById("user").value,
+    password: document.getElementById("pwd").value
+  });
+  if(r.json && r.json.code === 0){
+    document.getElementById("tok").value = r.json.data.token;
+    pass(1);
+    toast("拿到 token 了");
+  }
+  refreshState();
+}
+async function doRoleInfo(){
+  const r = await api("GET", "/api/role/info", {token: token()});
+  if(r.json && r.json.code === 0) pass(2);
+  checkAuth(r);
+}
+async function doClaim(){
+  const rid = parseInt(document.getElementById("rid").value, 10);
+  const r = await api("POST", "/api/reward/claim", {token: token(), rewardId: rid});
+  if(r.json){
+    if(r.json.code === 0 && rid === 1) pass(3);
+    if(r.json.code === 0 && rid === 2) pass(6);
+    if(r.json.code === 50003) pass(4);
+    if(r.json.code === 50002) pass(5);
+  }
+  checkAuth(r);
+}
+async function doSetLevel(){
+  await api("POST", "/api/gm/set_level", {level: document.getElementById("newlv").value});
+  refreshState();
+  toast("等级已改，回去领王者礼包试试");
+}
+async function doReset(){
+  if(MODE === "live") await api("POST", "/api/gm/reset", {});
+  else MOCK.reset();
+  refreshState();
+  toast("数据已重置");
+}
+function checkAuth(r){ if(r.json && r.json.code === 10002) pass(7); }
+
+function refreshState(){
+  if(MODE === "live"){
+    fetch("/api/state").then(function(r){ return r.json(); })
+      .then(function(j){ paint(j.data); }).catch(function(){});
+  }else{
+    paint(MOCK.state());
+  }
+}
+function paint(d){
+  if(!d) return;
+  document.getElementById("gold").textContent = d.gold;
+  document.getElementById("lv").value = d.level;
+  document.getElementById("claimed").textContent =
+    (d.claimed && d.claimed.length) ? d.claimed.join(", ") : "无";
+  if(!document.getElementById("tok").value && d.token)
+    document.getElementById("tok").value = d.token;
+}
+
+/* ---- 启动：先看有没有真服务端，没有就用内置的 ---- */
+(async function init(){
+  const tag = document.getElementById("modeTag");
+  try{
+    const ctl = new AbortController();
+    setTimeout(function(){ ctl.abort(); }, 900);
+    const r = await fetch(API_BASE + "/api/ping", {signal:ctl.signal});
+    const j = await r.json();
+    if(j && j.data && j.data.server === "ok") MODE = "live";
+  }catch(e){ /* 没有真服务端，用内置的 */ }
+
+  if(MODE === "live"){
+    tag.textContent = "● 已连接真实服务端 127.0.0.1:8899";
+    tag.className = "live";
+  }else{
+    tag.textContent = "● 离线模拟模式（内置服务端，功能完全一样）";
+    tag.className = "";
+  }
+
+  renderTasks();
+  showEmpty();
+  refreshState();
+})();
+</script>
+</body>
+</html>

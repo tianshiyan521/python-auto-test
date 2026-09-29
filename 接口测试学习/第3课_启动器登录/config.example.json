@@ -1,0 +1,9 @@
+{
+  "_说明": "复制本文件为 config.json 并填入你自己的环境信息。config.json 不会被上传到仓库。",
+  "账号": "your_account",
+  "密码": "your_password",
+  "网关": "http://your-gateway-host:9511/",
+  "CDN": "http://your-cdn-host:9000/raptor-client-test",
+  "启动游戏": false,
+  "超时秒": 8
+}
