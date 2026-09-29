@@ -39,7 +39,7 @@ node_modules/
 .venv/
 env/
 
-# Hexo 博客工程（含 node_modules，且不属于本仓库主题）
+# Hexo 博客工程（已拆为独立仓库，见 myblog/.git）
 myblog/
 
 # 大批量截图（体积 473MB，不适合进版本库）
