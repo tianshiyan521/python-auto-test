@@ -1,0 +1,6 @@
+username,password,email,role
+admin,admin123,admin@test.com,administrator
+testuser1,pass111,user1@test.com,normal
+testuser2,pass222,user2@test.com,normal
+testuser3,pass333,user3@test.com,vip
+guest,guest999,guest@test.com,visitor

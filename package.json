@@ -1,0 +1,24 @@
+{
+  "name": "claw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tianshiyan521/python-auto-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tianshiyan521/python-auto-test/issues"
+  },
+  "homepage": "https://github.com/tianshiyan521/python-auto-test#readme",
+  "dependencies": {
+    "docx": "^9.7.1",
+    "pptxgenjs": "^4.0.1"
+  }
+}
