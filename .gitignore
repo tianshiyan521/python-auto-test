@@ -31,3 +31,34 @@ Thumbs.db
 *.tmp
 *.log
 nul
+
+# ---------------- 以下为仓库整理时补充（2026-09-29）----------------
+
+# 依赖目录（体积极大，永远不要提交）
+node_modules/
+.venv/
+env/
+
+# Hexo 博客工程（含 node_modules，且不属于本仓库主题）
+myblog/
+
+# 大批量截图（体积 473MB，不适合进版本库）
+UI截图/
+generated-images/
+
+# 二进制可执行文件 / 驱动
+*.exe
+*.dll
+msedgedriver.exe
+
+# 测试产物与报告
+*.db
+jmeter_report/
+allure-report/
+allure-results/
+test_results.db
+
+# 敏感配置（含真实网关地址与账号密码）
+# 提交 config.example.json 即可，真实 config.json 仅留本地
+config.json
+**/config.json
