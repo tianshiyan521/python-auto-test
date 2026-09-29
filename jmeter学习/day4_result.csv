@@ -1,0 +1,29 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1782954956921,1940,01-GET /get - 响应断言+JSON断言,200,OK,Day4-线程组(断言实战) 1-1,text,true,,601,199,2,2,https://httpbin.org/get,1937,0,859
+1782954958885,1776,02-GET /status/200 - 响应断言,200,OK,Day4-线程组(断言实战) 1-1,text,true,,236,206,2,2,https://httpbin.org/status/200,1776,0,0
+1782954960664,672,03-GET jsonplaceholder/posts/1 - 持续时间断言,200,OK,Day4-线程组(断言实战) 1-1,text,true,,1430,220,2,2,https://jsonplaceholder.typicode.com/posts/1,672,0,454
+1782954961337,222,04-GET /bytes/2048 - 大小断言,200,OK,Day4-线程组(断言实战) 1-1,text,true,,2287,206,2,2,https://httpbin.org/bytes/2048,222,0,0
+1782954961560,1878,05-GET /response-headers - 响应头断言,200,OK,Day4-线程组(断言实战) 1-1,text,true,,370,242,2,2,https://httpbin.org/response-headers?freeform=JMeterDay4_Assertion,1878,0,0
+1782954963439,225,06-GET /uuid - BeanShell断言,200,OK,Day4-线程组(断言实战) 1-1,text,true,,282,200,2,2,https://httpbin.org/uuid,225,0,0
+1782954963666,218,07-GET /status/404 - 断言失败演示,404,NOT FOUND,Day4-线程组(断言实战) 1-1,text,false,断言失败演示：接口返回404，但断言期望200,243,206,2,2,https://httpbin.org/status/404,218,0,0
+1782954963886,220,01-GET /get - 响应断言+JSON断言,200,OK,Day4-线程组(断言实战) 1-1,text,true,,601,199,2,2,https://httpbin.org/get,220,0,0
+1782954964107,221,02-GET /status/200 - 响应断言,200,OK,Day4-线程组(断言实战) 1-1,text,true,,236,206,2,2,https://httpbin.org/status/200,221,0,0
+1782954964329,214,03-GET jsonplaceholder/posts/1 - 持续时间断言,200,OK,Day4-线程组(断言实战) 1-1,text,true,,1430,220,2,2,https://jsonplaceholder.typicode.com/posts/1,214,0,0
+1782954964544,225,04-GET /bytes/2048 - 大小断言,200,OK,Day4-线程组(断言实战) 1-1,text,true,,2287,206,2,2,https://httpbin.org/bytes/2048,225,0,0
+1782954964770,221,05-GET /response-headers - 响应头断言,200,OK,Day4-线程组(断言实战) 1-1,text,true,,370,242,2,2,https://httpbin.org/response-headers?freeform=JMeterDay4_Assertion,221,0,0
+1782954964992,476,06-GET /uuid - BeanShell断言,200,OK,Day4-线程组(断言实战) 1-1,text,true,,282,200,2,2,https://httpbin.org/uuid,476,0,0
+1782954965469,222,07-GET /status/404 - 断言失败演示,404,NOT FOUND,Day4-线程组(断言实战) 1-1,text,false,断言失败演示：接口返回404，但断言期望200,243,206,2,2,https://httpbin.org/status/404,222,0,0
+1782954957359,10007,01-GET /get - 响应断言+JSON断言,200,OK,Day4-线程组(断言实战) 1-2,text,true,,601,199,1,1,https://httpbin.org/get,10007,0,732
+1782954967368,559,02-GET /status/200 - 响应断言,200,OK,Day4-线程组(断言实战) 1-2,text,true,,236,206,1,1,https://httpbin.org/status/200,559,0,0
+1782954967929,710,03-GET jsonplaceholder/posts/1 - 持续时间断言,200,OK,Day4-线程组(断言实战) 1-2,text,true,,1430,220,1,1,https://jsonplaceholder.typicode.com/posts/1,710,0,474
+1782954968640,243,04-GET /bytes/2048 - 大小断言,200,OK,Day4-线程组(断言实战) 1-2,text,true,,2287,206,1,1,https://httpbin.org/bytes/2048,243,0,0
+1782954968883,242,05-GET /response-headers - 响应头断言,200,OK,Day4-线程组(断言实战) 1-2,text,true,,370,242,1,1,https://httpbin.org/response-headers?freeform=JMeterDay4_Assertion,242,0,0
+1782954969126,240,06-GET /uuid - BeanShell断言,200,OK,Day4-线程组(断言实战) 1-2,text,true,,282,200,1,1,https://httpbin.org/uuid,240,0,0
+1782954969367,239,07-GET /status/404 - 断言失败演示,404,NOT FOUND,Day4-线程组(断言实战) 1-2,text,false,断言失败演示：接口返回404，但断言期望200,243,206,1,1,https://httpbin.org/status/404,239,0,0
+1782954969607,723,01-GET /get - 响应断言+JSON断言,200,OK,Day4-线程组(断言实战) 1-2,text,true,,601,199,1,1,https://httpbin.org/get,723,0,0
+1782954970331,240,02-GET /status/200 - 响应断言,200,OK,Day4-线程组(断言实战) 1-2,text,true,,236,206,1,1,https://httpbin.org/status/200,240,0,0
+1782954970571,238,03-GET jsonplaceholder/posts/1 - 持续时间断言,200,OK,Day4-线程组(断言实战) 1-2,text,true,,1430,220,1,1,https://jsonplaceholder.typicode.com/posts/1,238,0,0
+1782954970809,802,04-GET /bytes/2048 - 大小断言,200,OK,Day4-线程组(断言实战) 1-2,text,true,,2287,206,1,1,https://httpbin.org/bytes/2048,802,0,0
+1782954971612,241,05-GET /response-headers - 响应头断言,200,OK,Day4-线程组(断言实战) 1-2,text,true,,370,242,1,1,https://httpbin.org/response-headers?freeform=JMeterDay4_Assertion,241,0,0
+1782954971853,240,06-GET /uuid - BeanShell断言,200,OK,Day4-线程组(断言实战) 1-2,text,true,,282,200,1,1,https://httpbin.org/uuid,240,0,0
+1782954972094,240,07-GET /status/404 - 断言失败演示,404,NOT FOUND,Day4-线程组(断言实战) 1-2,text,false,断言失败演示：接口返回404，但断言期望200,243,206,1,1,https://httpbin.org/status/404,240,0,0

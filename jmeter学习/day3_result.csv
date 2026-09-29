@@ -1,0 +1,43 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1782867796201,904,01-GET /headers - 验证请求头,200,OK,Day3-线程组(配置元件实战) 1-2,text,true,,622,322,3,3,https://httpbin.org/headers,897,0,665
+1782867797108,218,02-GET /cookies - 验证Cookie预设,200,OK,Day3-线程组(配置元件实战) 1-2,text,true,,300,322,3,3,https://httpbin.org/cookies,218,0,0
+1782867795568,1809,01-GET /headers - 验证请求头,200,OK,Day3-线程组(配置元件实战) 1-1,text,true,,622,322,3,3,https://httpbin.org/headers,1809,0,1277
+1782867797380,241,02-GET /cookies - 验证Cookie预设,200,OK,Day3-线程组(配置元件实战) 1-1,text,true,,300,322,3,3,https://httpbin.org/cookies,241,0,0
+1782867797327,446,03-GET /cookies/set - 服务器下发Cookie,200,OK,Day3-线程组(配置元件实战) 1-2,text,true,,885,717,3,3,https://httpbin.org/cookies,222,0,0
+1782867797327,222,03-GET /cookies/set - 服务器下发Cookie-0,302,FOUND,Day3-线程组(配置元件实战) 1-2,text,true,,539,360,3,3,https://httpbin.org/cookies/set?server_cookie=jmeter_auto_capture,222,0,0
+1782867797555,218,03-GET /cookies/set - 服务器下发Cookie-1,200,OK,Day3-线程组(配置元件实战) 1-2,text,true,,346,357,3,3,https://httpbin.org/cookies,218,0,0
+1782867796859,930,01-GET /headers - 验证请求头,200,OK,Day3-线程组(配置元件实战) 1-3,text,true,,622,322,3,3,https://httpbin.org/headers,930,0,698
+1782867797774,219,04-GET /cookies - 验证自动传递,200,OK,Day3-线程组(配置元件实战) 1-2,text,true,,346,357,3,3,https://httpbin.org/cookies,219,0,0
+1782867797789,229,02-GET /cookies - 验证Cookie预设,200,OK,Day3-线程组(配置元件实战) 1-3,text,true,,300,322,3,3,https://httpbin.org/cookies,229,0,0
+1782867797623,496,03-GET /cookies/set - 服务器下发Cookie,200,OK,Day3-线程组(配置元件实战) 1-1,text,true,,885,717,3,3,https://httpbin.org/cookies,258,0,0
+1782867797623,258,03-GET /cookies/set - 服务器下发Cookie-0,302,FOUND,Day3-线程组(配置元件实战) 1-1,text,true,,539,360,3,3,https://httpbin.org/cookies/set?server_cookie=jmeter_auto_capture,258,0,0
+1782867797882,237,03-GET /cookies/set - 服务器下发Cookie-1,200,OK,Day3-线程组(配置元件实战) 1-1,text,true,,346,357,3,3,https://httpbin.org/cookies,237,0,0
+1782867797995,219,05-GET /cache - 验证缓存行为,200,OK,Day3-线程组(配置元件实战) 1-2,text,true,,825,355,3,3,https://httpbin.org/cache,219,0,0
+1782867798123,240,04-GET /cookies - 验证自动传递,200,OK,Day3-线程组(配置元件实战) 1-1,text,true,,346,357,3,3,https://httpbin.org/cookies,240,0,0
+1782867798226,218,01-GET /headers - 验证请求头,200,OK,Day3-线程组(配置元件实战) 1-2,text,true,,657,357,3,3,https://httpbin.org/headers,218,0,0
+1782867798019,466,03-GET /cookies/set - 服务器下发Cookie,200,OK,Day3-线程组(配置元件实战) 1-3,text,true,,885,717,3,3,https://httpbin.org/cookies,232,0,0
+1782867798019,233,03-GET /cookies/set - 服务器下发Cookie-0,302,FOUND,Day3-线程组(配置元件实战) 1-3,text,true,,539,360,3,3,https://httpbin.org/cookies/set?server_cookie=jmeter_auto_capture,232,0,0
+1782867798252,233,03-GET /cookies/set - 服务器下发Cookie-1,200,OK,Day3-线程组(配置元件实战) 1-3,text,true,,346,357,3,3,https://httpbin.org/cookies,233,0,0
+1782867798363,239,05-GET /cache - 验证缓存行为,200,OK,Day3-线程组(配置元件实战) 1-1,text,true,,825,355,3,3,https://httpbin.org/cache,238,0,0
+1782867798446,219,02-GET /cookies - 验证Cookie预设,200,OK,Day3-线程组(配置元件实战) 1-2,text,true,,346,357,3,3,https://httpbin.org/cookies,219,0,0
+1782867798487,228,04-GET /cookies - 验证自动传递,200,OK,Day3-线程组(配置元件实战) 1-3,text,true,,346,357,3,3,https://httpbin.org/cookies,228,0,0
+1782867798605,311,01-GET /headers - 验证请求头,200,OK,Day3-线程组(配置元件实战) 1-1,text,true,,657,357,3,3,https://httpbin.org/headers,310,0,0
+1782867798716,233,05-GET /cache - 验证缓存行为,200,OK,Day3-线程组(配置元件实战) 1-3,text,true,,825,355,3,3,https://httpbin.org/cache,233,0,0
+1782867798951,234,01-GET /headers - 验证请求头,200,OK,Day3-线程组(配置元件实战) 1-3,text,true,,657,357,3,3,https://httpbin.org/headers,234,0,0
+1782867799187,229,02-GET /cookies - 验证Cookie预设,200,OK,Day3-线程组(配置元件实战) 1-3,text,true,,346,357,3,3,https://httpbin.org/cookies,229,0,0
+1782867798917,519,02-GET /cookies - 验证Cookie预设,200,OK,Day3-线程组(配置元件实战) 1-1,text,true,,346,357,3,3,https://httpbin.org/cookies,519,0,0
+1782867798666,893,03-GET /cookies/set - 服务器下发Cookie,200,OK,Day3-线程组(配置元件实战) 1-2,text,true,,885,752,3,3,https://httpbin.org/cookies,676,0,0
+1782867798666,676,03-GET /cookies/set - 服务器下发Cookie-0,302,FOUND,Day3-线程组(配置元件实战) 1-2,text,true,,539,395,3,3,https://httpbin.org/cookies/set?server_cookie=jmeter_auto_capture,676,0,0
+1782867799343,216,03-GET /cookies/set - 服务器下发Cookie-1,200,OK,Day3-线程组(配置元件实战) 1-2,text,true,,346,357,3,3,https://httpbin.org/cookies,216,0,0
+1782867799559,216,04-GET /cookies - 验证自动传递,200,OK,Day3-线程组(配置元件实战) 1-2,text,true,,346,357,3,3,https://httpbin.org/cookies,216,0,0
+1782867799418,464,03-GET /cookies/set - 服务器下发Cookie,200,OK,Day3-线程组(配置元件实战) 1-3,text,true,,885,752,3,3,https://httpbin.org/cookies,232,0,0
+1782867799418,232,03-GET /cookies/set - 服务器下发Cookie-0,302,FOUND,Day3-线程组(配置元件实战) 1-3,text,true,,539,395,3,3,https://httpbin.org/cookies/set?server_cookie=jmeter_auto_capture,232,0,0
+1782867799651,231,03-GET /cookies/set - 服务器下发Cookie-1,200,OK,Day3-线程组(配置元件实战) 1-3,text,true,,346,357,3,3,https://httpbin.org/cookies,231,0,0
+1782867799437,476,03-GET /cookies/set - 服务器下发Cookie,200,OK,Day3-线程组(配置元件实战) 1-1,text,true,,885,752,3,3,https://httpbin.org/cookies,236,0,0
+1782867799437,236,03-GET /cookies/set - 服务器下发Cookie-0,302,FOUND,Day3-线程组(配置元件实战) 1-1,text,true,,539,395,3,3,https://httpbin.org/cookies/set?server_cookie=jmeter_auto_capture,236,0,0
+1782867799674,239,03-GET /cookies/set - 服务器下发Cookie-1,200,OK,Day3-线程组(配置元件实战) 1-1,text,true,,346,357,3,3,https://httpbin.org/cookies,238,0,0
+1782867799776,217,05-GET /cache - 验证缓存行为,304,NOT MODIFIED,Day3-线程组(配置元件实战) 1-2,,true,,187,454,3,3,https://httpbin.org/cache,0,0,0
+1782867799883,230,04-GET /cookies - 验证自动传递,200,OK,Day3-线程组(配置元件实战) 1-3,text,true,,346,357,2,2,https://httpbin.org/cookies,230,0,0
+1782867799914,238,04-GET /cookies - 验证自动传递,200,OK,Day3-线程组(配置元件实战) 1-1,text,true,,346,357,2,2,https://httpbin.org/cookies,238,0,0
+1782867800116,234,05-GET /cache - 验证缓存行为,304,NOT MODIFIED,Day3-线程组(配置元件实战) 1-3,,true,,187,454,2,2,https://httpbin.org/cache,0,0,0
+1782867800154,236,05-GET /cache - 验证缓存行为,304,NOT MODIFIED,Day3-线程组(配置元件实战) 1-1,,true,,187,454,1,1,https://httpbin.org/cache,0,0,0

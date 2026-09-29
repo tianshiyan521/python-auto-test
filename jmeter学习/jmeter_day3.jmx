@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="JMeter Day3 - HTTP配置元件实战" enabled="true">
+      <stringProp name="TestPlan.comments">Day3学习目标：HTTP请求默认值、Header Manager、Cookie Manager、缓存管理器
+测试目标：httpbin.org（支持Cookie/Cache/Gzip等特性）
+场景：模拟浏览器访问流程 - 设置请求头→访问首页→设置Cookie→访问受保护接口→验证缓存</stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义变量" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="BASE_URL" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL</stringProp>
+            <stringProp name="Argument.value">httpbin.org</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="PROTOCOL" elementType="Argument">
+            <stringProp name="Argument.name">PROTOCOL</stringProp>
+            <stringProp name="Argument.value">https</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="TEST_COOKIE_NAME" elementType="Argument">
+            <stringProp name="Argument.name">TEST_COOKIE_NAME</stringProp>
+            <stringProp name="Argument.value">session_token</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="TEST_COOKIE_VALUE" elementType="Argument">
+            <stringProp name="Argument.name">TEST_COOKIE_VALUE</stringProp>
+            <stringProp name="Argument.value">abc123def456_jmeter_day3</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+    </TestPlan>
+    <hashTree>
+
+      <!-- ==================== 配置元件1: HTTP请求默认值 ==================== -->
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="【配置元件1】HTTP请求默认值" enabled="true">
+        <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+        <stringProp name="HTTPSampler.protocol">${PROTOCOL}</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
+        <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout">5000</stringProp>
+        <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+        <boolProp name="ConfigTestElement.use_keepalive">true</boolProp>
+        <stringProp name="TestPlan.comments">作用：统一配置域名/协议/超时，所有HTTP Request自动继承这些默认值。
+重点：子级可覆盖父级默认值；一个Test Plan可有多个HTTP请求默认值（作用域隔离）</stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+
+      <!-- ==================== 配置元件2: HTTP Header Manager ==================== -->
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="【配置元件2】HTTP Header Manager - 全局请求头" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">User-Agent</stringProp>
+            <stringProp name="Header.value">JMeter-Day3-Test/5.6.3 (Performance Test Agent)</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Accept</stringProp>
+            <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Accept-Language</stringProp>
+            <stringProp name="Header.value">zh-CN,zh;q=0.9,en;q=0.8</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Accept-Encoding</stringProp>
+            <stringProp name="Header.value">gzip, deflate, br</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Connection</stringProp>
+            <stringProp name="Header.value">keep-alive</stringProp>
+          </elementProp>
+        </collectionProp>
+        <stringProp name="TestPlan.comments">作用：为所有请求统一添加HTTP头。
+关键场景：Content-Type、Authorization Token、自定义Header、模拟不同User-Agent。
+⚠️ Content-Type对于POST/PUT请求非常重要，建议在具体请求上覆盖设置。</stringProp>
+      </HeaderManager>
+      <hashTree/>
+
+      <!-- ==================== 配置元件3: HTTP Cookie Manager ==================== -->
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="【配置元件3】HTTP Cookie Manager - Cookie自动管理" enabled="true">
+        <collectionProp name="CookieManager.cookies">
+          <!-- 预设一个Cookie，模拟已登录场景 -->
+          <elementProp name="${TEST_COOKIE_NAME}" elementType="Cookie" testname="session_token">
+            <stringProp name="Cookie.value">${TEST_COOKIE_VALUE}</stringProp>
+            <stringProp name="Cookie.domain">${BASE_URL}</stringProp>
+            <stringProp name="Cookie.path">/</stringProp>
+            <boolProp name="Cookie.secure">true</boolProp>
+            <longProp name="Cookie.expires">0</longProp>
+            <boolProp name="Cookie.path_specified">true</boolProp>
+            <boolProp name="Cookie.domain_specified">true</boolProp>
+          </elementProp>
+        </collectionProp>
+        <stringProp name="CookieManager.policy">standard</stringProp>
+        <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+        <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+        <stringProp name="TestPlan.comments">作用：自动管理Cookie的发送和接收。
+- 预设Cookie：模拟登录态
+- 自动接收：服务器Set-Cookie自动保存并后续携带
+- clearEachIteration=false：跨迭代保持Cookie
+- 策略：standard(默认)/compatibility/rfc2109/netscape/ignore</stringProp>
+      </CookieManager>
+      <hashTree/>
+
+      <!-- ==================== 配置元件4: HTTP缓存管理器 ==================== -->
+      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="【配置元件4】HTTP缓存管理器 - 浏览器缓存模拟" enabled="true">
+        <boolProp name="clearEachIteration">false</boolProp>
+        <boolProp name="useExpires">true</boolProp>
+        <boolProp name="CacheManager.controlledByThread">false</boolProp>
+        <stringProp name="TestPlan.comments">作用：模拟浏览器缓存行为。
+- useExpires=true：遵循Cache-Control/Expires头
+- clearEachIteration=false：跨迭代保留缓存
+- 缓存命中时不发实际HTTP请求（304/from-cache）
+- 对静态资源（图片/CSS/JS）压测时很重要</stringProp>
+      </CacheManager>
+      <hashTree/>
+
+      <!-- ==================== 线程组 ==================== -->
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Day3-线程组(配置元件实战)" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">2</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">3</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">2</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <stringProp name="ThreadGroup.start_time">2026-07-01 08:00:00</stringProp>
+        <stringProp name="TestPlan.comments">3线程×2循环=6次迭代，每迭代5个请求=30总请求（温和验证）</stringProp>
+      </ThreadGroup>
+      <hashTree>
+
+        <!-- ===== 请求1: GET /headers - 验证Header Manager ===== -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="01-GET /headers - 验证请求头" enabled="true">
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.path">/headers</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="TestPlan.comments">验证点：httpbin.org/headers 返回请求头，可检查Header Manager配置的User-Agent等是否正确发送。
+此请求不覆盖任何默认值，完全继承HTTP请求默认值。</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+
+        <!-- ===== 请求2: GET /cookies - 验证Cookie Manager ===== -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="02-GET /cookies - 验证Cookie预设" enabled="true">
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.path">/cookies</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="TestPlan.comments">验证点：httpbin.org/cookies 返回服务器收到的Cookie。
+应该能看到Cookie Manager预设的session_token=abc123def456_jmeter_day3</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+
+        <!-- ===== 请求3: GET /cookies/set - 测试Set-Cookie自动接收 ===== -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="03-GET /cookies/set - 服务器下发Cookie" enabled="true">
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.path">/cookies/set?server_cookie=jmeter_auto_capture</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="TestPlan.comments">验证点：httpbin.org/cookies/set?name=value 会通过Set-Cookie下发Cookie。
+Cookie Manager自动接收并保存，后续请求会自动携带。</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+
+        <!-- ===== 请求4: GET /cookies (第2次) - 验证Cookie自动传递 ===== -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="04-GET /cookies - 验证自动传递" enabled="true">
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.path">/cookies</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="TestPlan.comments">验证点：再次访问/cookies，应该能看到两个Cookie：
+1. session_token=abc123def456_jmeter_day3（预设）
+2. server_cookie=jmeter_auto_capture（上一步服务器下发的）</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+
+        <!-- ===== 请求5: GET /cache - 验证缓存管理器 ===== -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="05-GET /cache - 验证缓存行为" enabled="true">
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.path">/cache</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="TestPlan.comments">验证点：httpbin.org/cache 返回Cache-Control头，指示缓存行为。
+第2次迭代时，缓存管理器可能返回304或直接使用缓存（取决于服务器Cache-Control头）。
+如果服务器设置Cache-Control: max-age=N，后续请求将不发实际HTTP请求。</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+
+      </hashTree>
+
+      <!-- ==================== 监听器 ==================== -->
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="聚合报告" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+
+      <!-- 简单数据写入器 - 保存CSV结果 -->
+      <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="CSV结果保存" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">jmeter学习/day3_result.csv</stringProp>
+      </ResultCollector>
+      <hashTree/>
+
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

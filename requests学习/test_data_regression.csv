@@ -1,0 +1,9 @@
+场景,action,username,password,expected_status
+正常登录,login,player_001,pass123,200
+VIP登录,login,vip_gold,vip_pass_2024,200
+游客登录,login,guest_temp,,200
+空用户名,login,,pass123,200
+空密码,login,player_001,,200
+特殊字符-中文,login,山海剑客,密码123,200
+超长用户名,login,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,test,200
+数字用户名,login,1234567890,p@ssw0rd!,200

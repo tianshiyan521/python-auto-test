@@ -1,0 +1,20 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1783386133496,459,01-GET /posts - 获取帖子列表,200,OK,线程组1-关联基础(单值提取) 1-1,text,true,,28657,148,1,3,http://jsonplaceholder.typicode.com/posts,450,0,222
+1783386133496,473,01-GET /users - 获取用户列表,200,OK,线程组2-关联进阶(多值提取) 2-1,text,true,,6786,148,1,3,http://jsonplaceholder.typicode.com/users,473,0,238
+1783386133496,492,01-GET /posts - 获取帖子列表,200,OK,线程组3-关联实战(完整链路) 3-1,text,true,,28657,148,1,3,http://jsonplaceholder.typicode.com/posts,473,0,240
+1783386133960,219,02-GET /posts/1 - 用提取的ID查详情,200,OK,线程组1-关联基础(单值提取) 1-1,text,true,,1434,150,1,3,http://jsonplaceholder.typicode.com/posts/1,218,0,0
+1783386133973,230,02-GET /users/1 - 验证email=Sincere@april.biz,200,OK,线程组2-关联进阶(多值提取) 2-1,text,true,,1640,150,1,3,http://jsonplaceholder.typicode.com/users/1,230,0,0
+1783386133991,411,02-GET /posts/53 - 帖子详情,200,OK,线程组3-关联实战(完整链路) 3-1,text,true,,1383,151,1,3,http://jsonplaceholder.typicode.com/posts/53,411,0,0
+1783386134214,232,03-GET /users/2 - 验证email=Shanna@melissa.tv,200,OK,线程组2-关联进阶(多值提取) 2-1,text,true,,1640,150,1,3,http://jsonplaceholder.typicode.com/users/2,232,0,0
+1783386134214,388,03-GET /posts/1/comments - 查评论,200,OK,线程组1-关联基础(单值提取) 1-1,text,true,,2641,159,1,3,http://jsonplaceholder.typicode.com/posts/1/comments,388,0,0
+1783386134447,235,04-GET /users/3 - 验证email=Nathan@yesenia.net,200,OK,线程组2-关联进阶(多值提取) 2-1,text,true,,1651,151,1,3,http://jsonplaceholder.typicode.com/users/3,235,0,0
+1783386134403,413,03-GET /users/6 - 查作者信息,200,OK,线程组3-关联实战(完整链路) 3-1,text,true,,1669,150,1,2,http://jsonplaceholder.typicode.com/users/6,413,0,0
+1783386134605,240,01-GET /posts - 获取帖子列表,200,OK,线程组1-关联基础(单值提取) 1-1,text,true,,28657,149,1,2,http://jsonplaceholder.typicode.com/posts,215,0,0
+1783386134845,217,02-GET /posts/1 - 用提取的ID查详情,200,OK,线程组1-关联基础(单值提取) 1-1,text,true,,1434,151,1,2,http://jsonplaceholder.typicode.com/posts/1,217,0,0
+1783386134817,262,01-GET /posts - 获取帖子列表,200,OK,线程组3-关联实战(完整链路) 3-1,text,true,,28657,149,1,2,http://jsonplaceholder.typicode.com/posts,231,0,0
+1783386135063,216,03-GET /posts/1/comments - 查评论,200,OK,线程组1-关联基础(单值提取) 1-1,text,true,,2641,160,1,2,http://jsonplaceholder.typicode.com/posts/1/comments,216,0,0
+1783386135080,412,02-GET /posts/47 - 帖子详情,200,OK,线程组3-关联实战(完整链路) 3-1,text,true,,1400,152,1,2,http://jsonplaceholder.typicode.com/posts/47,412,0,0
+1783386135280,239,01-GET /posts - 获取帖子列表,200,OK,线程组1-关联基础(单值提取) 1-1,text,true,,28657,149,1,2,http://jsonplaceholder.typicode.com/posts,214,0,0
+1783386135521,218,02-GET /posts/1 - 用提取的ID查详情,200,OK,线程组1-关联基础(单值提取) 1-1,text,true,,1434,151,1,2,http://jsonplaceholder.typicode.com/posts/1,217,0,0
+1783386135493,410,03-GET /users/5 - 查作者信息,200,OK,线程组3-关联实战(完整链路) 3-1,text,true,,1642,151,1,2,http://jsonplaceholder.typicode.com/users/5,410,0,0
+1783386135739,218,03-GET /posts/1/comments - 查评论,200,OK,线程组1-关联基础(单值提取) 1-1,text,true,,2641,160,1,1,http://jsonplaceholder.typicode.com/posts/1/comments,217,0,0

@@ -1,0 +1,263 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1783041015122,996,01-POST /posts - CSV用户数据驱动,404,Not Found,线程组3-CSV多列参数化 3-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[201]]]
+
+/",1136,286,1,4,https://jsonplaceholder.typicode.com/,996,0,664
+1783041015122,1176,01-GET /posts/50 - 随机帖子,404,Not Found,线程组2-函数助手实战 2-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1114,204,2,4,https://jsonplaceholder.typicode.com/72,1176,0,654
+1783041016122,220,02-GET /posts?userId=_RND - 读取验证,200,OK,线程组3-CSV多列参数化 3-1,text,true,,9553,202,1,4,https://jsonplaceholder.typicode.com/,216,0,0
+1783041015122,1213,01-GET /posts/1 - CSV参数化,404,Not Found,线程组1-CSV参数化 1-1,text,false,期望状态码200，实际不符,1114,203,1,4,https://jsonplaceholder.typicode.com/1,1213,0,654
+1783041016343,325,01-POST /posts - CSV用户数据驱动,404,Not Found,线程组3-CSV多列参数化 3-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[201]]]
+
+/",1136,286,1,4,https://jsonplaceholder.typicode.com/,325,0,0
+1783041016301,509,02-POST /posts - __time+__counter组合,404,Not Found,线程组2-函数助手实战 2-1,text,false,POST创建资源应返回201,1132,286,2,4,https://jsonplaceholder.typicode.com/,509,0,0
+1783041016670,222,02-GET /posts?userId=_RND - 读取验证,200,OK,线程组3-CSV多列参数化 3-1,text,true,,9553,202,1,4,https://jsonplaceholder.typicode.com/,216,0,0
+1783041016361,544,02-GET /posts/1/comments - CSV嵌套路径,404,Not Found,线程组1-CSV参数化 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1113,212,1,4,https://jsonplaceholder.typicode.com/1/comments,544,0,0
+1783041016811,182,03-GET /posts?userId=1 - 线程号参数化,200,OK,线程组2-函数助手实战 2-1,text,true,,9553,203,2,4,https://jsonplaceholder.typicode.com/,177,0,0
+1783041016037,1140,01-GET /posts/71 - 随机帖子,404,Not Found,线程组2-函数助手实战 2-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1110,204,2,4,https://jsonplaceholder.typicode.com/23,1140,0,535
+1783041016893,325,01-POST /posts - CSV用户数据驱动,404,Not Found,线程组3-CSV多列参数化 3-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[201]]]
+
+/",1132,287,1,4,https://jsonplaceholder.typicode.com/,325,0,0
+1783041016993,285,04-DELETE /posts/7 - 随机删除,404,Not Found,线程组2-函数助手实战 2-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1108,290,2,4,https://jsonplaceholder.typicode.com/4,285,0,0
+1783041017219,224,02-GET /posts?userId=_RND - 读取验证,200,OK,线程组3-CSV多列参数化 3-1,text,true,,9553,203,1,4,https://jsonplaceholder.typicode.com/,214,0,0
+1783041016905,540,01-GET /posts/2 - CSV参数化,404,Not Found,线程组1-CSV参数化 1-1,text,false,期望状态码200，实际不符,1110,204,1,4,https://jsonplaceholder.typicode.com/2,540,0,0
+1783041017178,380,02-POST /posts - __time+__counter组合,404,Not Found,线程组2-函数助手实战 2-2,text,false,POST创建资源应返回201,1132,287,2,4,https://jsonplaceholder.typicode.com/,380,0,0
+1783041017443,326,01-POST /posts - CSV用户数据驱动,404,Not Found,线程组3-CSV多列参数化 3-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[201]]]
+
+/",1128,287,1,4,https://jsonplaceholder.typicode.com/,326,0,0
+1783041017279,525,01-GET /posts/68 - 随机帖子,404,Not Found,线程组2-函数助手实战 2-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1106,205,2,4,https://jsonplaceholder.typicode.com/80,525,0,0
+1783041017558,266,03-GET /posts?userId=2 - 线程号参数化,429,Too Many Requests,线程组2-函数助手实战 2-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[429]]]
+
+****** comparison: [[[200]]]
+
+/",809,203,2,4,https://jsonplaceholder.typicode.com/,266,0,0
+1783041017804,170,02-POST /posts - __time+__counter组合,429,Too Many Requests,线程组2-函数助手实战 2-1,text,false,POST创建资源应返回201,813,287,2,4,https://jsonplaceholder.typicode.com/,170,0,0
+1783041017769,211,02-GET /posts?userId=_RND - 读取验证,429,Too Many Requests,线程组3-CSV多列参数化 3-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[429]]]
+
+****** comparison: [[[200]]]
+
+/",807,203,1,4,https://jsonplaceholder.typicode.com/,211,0,0
+1783041017445,548,02-GET /posts/2/comments - CSV嵌套路径,404,Not Found,线程组1-CSV参数化 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1106,213,1,4,https://jsonplaceholder.typicode.com/2/comments,548,0,0
+1783041017975,169,03-GET /posts?userId=1 - 线程号参数化,429,Too Many Requests,线程组2-函数助手实战 2-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[429]]]
+
+****** comparison: [[[200]]]
+
+/",815,203,2,4,https://jsonplaceholder.typicode.com/,169,0,0
+1783041017982,210,01-POST /posts - CSV用户数据驱动,429,Too Many Requests,线程组3-CSV多列参数化 3-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[429]]]
+
+****** comparison: [[[201]]]
+
+/",817,287,1,4,https://jsonplaceholder.typicode.com/,210,0,0
+1783041017824,380,04-DELETE /posts/6 - 随机删除,404,Not Found,线程组2-函数助手实战 2-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1104,290,2,4,https://jsonplaceholder.typicode.com/2,380,0,0
+1783041018193,210,02-GET /posts?userId=_RND - 读取验证,429,Too Many Requests,线程组3-CSV多列参数化 3-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[429]]]
+
+****** comparison: [[[200]]]
+
+/",803,203,1,4,https://jsonplaceholder.typicode.com/,210,0,0
+1783041018144,284,04-DELETE /posts/6 - 随机删除,404,Not Found,线程组2-函数助手实战 2-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1104,290,2,3,https://jsonplaceholder.typicode.com/3,284,0,0
+1783041017994,541,01-GET /posts/3 - CSV参数化,404,Not Found,线程组1-CSV参数化 1-1,text,false,期望状态码200，实际不符,1106,204,1,3,https://jsonplaceholder.typicode.com/3,541,0,0
+1783041018205,618,01-GET /posts/88 - 随机帖子,404,Not Found,线程组2-函数助手实战 2-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1106,205,2,3,https://jsonplaceholder.typicode.com/20,618,0,0
+1783041018429,516,01-GET /posts/11 - 随机帖子,404,Not Found,线程组2-函数助手实战 2-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1106,205,2,3,https://jsonplaceholder.typicode.com/30,516,0,0
+1783041018536,547,02-GET /posts/3/comments - CSV嵌套路径,404,Not Found,线程组1-CSV参数化 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1106,213,1,3,https://jsonplaceholder.typicode.com/3/comments,547,0,0
+1783041018823,265,02-POST /posts - __time+__counter组合,429,Too Many Requests,线程组2-函数助手实战 2-2,text,false,POST创建资源应返回201,810,287,2,3,https://jsonplaceholder.typicode.com/,265,0,0
+1783041018945,170,02-POST /posts - __time+__counter组合,429,Too Many Requests,线程组2-函数助手实战 2-1,text,false,POST创建资源应返回201,806,287,2,3,https://jsonplaceholder.typicode.com/,169,0,0
+1783041019115,170,03-GET /posts?userId=1 - 线程号参数化,429,Too Many Requests,线程组2-函数助手实战 2-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[429]]]
+
+****** comparison: [[[200]]]
+
+/",810,203,2,3,https://jsonplaceholder.typicode.com/,169,0,0
+1783041019089,264,03-GET /posts?userId=2 - 线程号参数化,429,Too Many Requests,线程组2-函数助手实战 2-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[429]]]
+
+****** comparison: [[[200]]]
+
+/",802,203,2,3,https://jsonplaceholder.typicode.com/,264,0,0
+1783041019286,283,04-DELETE /posts/9 - 随机删除,404,Not Found,线程组2-函数助手实战 2-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1104,291,2,3,https://jsonplaceholder.typicode.com/10,283,0,0
+1783041019084,540,01-GET /posts/4 - CSV参数化,404,Not Found,线程组1-CSV参数化 1-1,text,false,期望状态码200，实际不符,1106,204,1,2,https://jsonplaceholder.typicode.com/4,540,0,0
+1783041019353,377,04-DELETE /posts/1 - 随机删除,404,Not Found,线程组2-函数助手实战 2-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1104,290,1,2,https://jsonplaceholder.typicode.com/6,377,0,0
+1783041019625,539,02-GET /posts/4/comments - CSV嵌套路径,404,Not Found,线程组1-CSV参数化 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1106,213,1,2,https://jsonplaceholder.typicode.com/4/comments,539,0,0
+1783041019731,612,01-GET /posts/61 - 随机帖子,404,Not Found,线程组2-函数助手实战 2-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1106,205,1,2,https://jsonplaceholder.typicode.com/48,612,0,0
+1783041020344,263,02-POST /posts - __time+__counter组合,429,Too Many Requests,线程组2-函数助手实战 2-2,text,false,POST创建资源应返回201,810,287,1,2,https://jsonplaceholder.typicode.com/,263,0,0
+1783041020165,538,01-GET /posts/5 - CSV参数化,404,Not Found,线程组1-CSV参数化 1-1,text,false,期望状态码200，实际不符,1106,204,1,2,https://jsonplaceholder.typicode.com/5,538,0,0
+1783041020607,264,03-GET /posts?userId=2 - 线程号参数化,429,Too Many Requests,线程组2-函数助手实战 2-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[429]]]
+
+****** comparison: [[[200]]]
+
+/",804,203,1,2,https://jsonplaceholder.typicode.com/,264,0,0
+1783041020704,541,02-GET /posts/5/comments - CSV嵌套路径,404,Not Found,线程组1-CSV参数化 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1106,213,1,2,https://jsonplaceholder.typicode.com/5/comments,541,0,0
+1783041020872,378,04-DELETE /posts/7 - 随机删除,404,Not Found,线程组2-函数助手实战 2-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",1104,290,1,1,https://jsonplaceholder.typicode.com/8,378,0,0
+1783041196418,507,01-GET /posts/1 - CSV参数化,200,OK,线程组1-CSV参数化 1-1,text,true,,1434,209,1,3,http://jsonplaceholder.typicode.com/posts/1,507,0,250
+1783041196418,626,01-POST /posts - CSV用户数据驱动,201,Created,线程组3-CSV多列参数化 3-1,text,true,,1242,291,1,3,http://jsonplaceholder.typicode.com/posts,626,0,205
+1783041196418,684,01-GET /posts/53 - 随机帖子,200,OK,线程组2-函数助手实战 2-1,text,true,,1390,210,1,3,http://jsonplaceholder.typicode.com/posts/48,684,0,229
+1783041196950,476,02-GET /posts/1/comments - CSV嵌套路径,200,OK,线程组1-CSV参数化 1-1,text,true,,2641,218,1,4,http://jsonplaceholder.typicode.com/posts/1/comments,476,0,0
+1783041197045,450,02-GET /posts?userId=_RND - 读取验证,200,OK,线程组3-CSV多列参数化 3-1,text,true,,28656,207,1,4,http://jsonplaceholder.typicode.com/posts,197,0,0
+1783041197104,445,02-POST /posts - __time+__counter组合,201,Created,线程组2-函数助手实战 2-1,text,true,,1242,291,2,4,http://jsonplaceholder.typicode.com/posts,445,0,0
+1783041197427,247,01-GET /posts/2 - CSV参数化,200,OK,线程组1-CSV参数化 1-1,text,true,,1423,209,1,4,http://jsonplaceholder.typicode.com/posts/2,247,0,0
+1783041197551,242,03-GET /posts?userId=1 - 线程号参数化,200,OK,线程组2-函数助手实战 2-1,text,true,,28656,208,2,4,http://jsonplaceholder.typicode.com/posts,222,0,0
+1783041197496,307,01-POST /posts - CSV用户数据驱动,201,Created,线程组3-CSV多列参数化 3-1,text,true,,1250,291,1,4,http://jsonplaceholder.typicode.com/posts,307,0,0
+1783041197347,753,01-GET /posts/24 - 随机帖子,200,OK,线程组2-函数助手实战 2-2,text,true,,1387,210,2,4,http://jsonplaceholder.typicode.com/posts/89,753,0,258
+1783041197794,331,04-DELETE /posts/7 - 随机删除,200,OK,线程组2-函数助手实战 2-1,text,true,,1109,296,2,4,http://jsonplaceholder.typicode.com/posts/6,331,0,0
+1783041197675,487,02-GET /posts/2/comments - CSV嵌套路径,200,OK,线程组1-CSV参数化 1-1,text,true,,2666,219,1,4,http://jsonplaceholder.typicode.com/posts/2/comments,487,0,0
+1783041197804,435,02-GET /posts?userId=_RND - 读取验证,200,OK,线程组3-CSV多列参数化 3-1,text,true,,28656,208,1,4,http://jsonplaceholder.typicode.com/posts,195,0,0
+1783041198239,308,01-POST /posts - CSV用户数据驱动,201,Created,线程组3-CSV多列参数化 3-1,text,true,,1250,292,1,4,http://jsonplaceholder.typicode.com/posts,308,0,0
+1783041198101,486,02-POST /posts - __time+__counter组合,201,Created,线程组2-函数助手实战 2-2,text,true,,1250,292,2,4,http://jsonplaceholder.typicode.com/posts,486,0,0
+1783041198162,467,01-GET /posts/3 - CSV参数化,200,OK,线程组1-CSV参数化 1-1,text,true,,1429,210,1,4,http://jsonplaceholder.typicode.com/posts/3,467,0,0
+1783041198588,287,03-GET /posts?userId=2 - 线程号参数化,200,OK,线程组2-函数助手实战 2-2,text,true,,28656,208,2,4,http://jsonplaceholder.typicode.com/posts,263,0,0
+1783041198548,454,02-GET /posts?userId=_RND - 读取验证,200,OK,线程组3-CSV多列参数化 3-1,text,true,,28656,208,1,4,http://jsonplaceholder.typicode.com/posts,193,0,0
+1783041198630,487,02-GET /posts/3/comments - CSV嵌套路径,200,OK,线程组1-CSV参数化 1-1,text,true,,2689,219,1,4,http://jsonplaceholder.typicode.com/posts/3/comments,486,0,0
+1783041198876,376,04-DELETE /posts/9 - 随机删除,200,OK,线程组2-函数助手实战 2-2,text,true,,1105,296,2,4,http://jsonplaceholder.typicode.com/posts/9,376,0,0
+1783041199003,307,01-POST /posts - CSV用户数据驱动,201,Created,线程组3-CSV多列参数化 3-1,text,true,,1246,292,1,4,http://jsonplaceholder.typicode.com/posts,306,0,0
+1783041198126,1191,01-GET /posts/1 - 随机帖子,200,OK,线程组2-函数助手实战 2-1,text,true,,1423,210,2,4,http://jsonplaceholder.typicode.com/posts/2,1191,0,0
+1783041199119,486,01-GET /posts/4 - CSV参数化,200,OK,线程组1-CSV参数化 1-1,text,true,,1400,210,1,4,http://jsonplaceholder.typicode.com/posts/4,486,0,0
+1783041199317,335,02-POST /posts - __time+__counter组合,201,Created,线程组2-函数助手实战 2-1,text,true,,1246,292,2,4,http://jsonplaceholder.typicode.com/posts,335,0,0
+1783041199257,502,01-GET /posts/11 - 随机帖子,200,OK,线程组2-函数助手实战 2-2,text,true,,1395,211,2,4,http://jsonplaceholder.typicode.com/posts/94,501,0,0
+1783041199653,245,03-GET /posts?userId=1 - 线程号参数化,200,OK,线程组2-函数助手实战 2-1,text,true,,28656,208,2,4,http://jsonplaceholder.typicode.com/posts,220,0,0
+1783041199310,691,02-GET /posts?userId=_RND - 读取验证,200,OK,线程组3-CSV多列参数化 3-1,text,true,,28656,208,1,4,http://jsonplaceholder.typicode.com/posts,452,0,0
+1783041199605,481,02-GET /posts/4/comments - CSV嵌套路径,200,OK,线程组1-CSV参数化 1-1,text,true,,2732,219,1,4,http://jsonplaceholder.typicode.com/posts/4/comments,480,0,0
+1783041199759,375,02-POST /posts - __time+__counter组合,201,Created,线程组2-函数助手实战 2-2,text,true,,1246,292,2,4,http://jsonplaceholder.typicode.com/posts,375,0,0
+1783041199900,335,04-DELETE /posts/5 - 随机删除,200,OK,线程组2-函数助手实战 2-1,text,true,,1105,296,2,4,http://jsonplaceholder.typicode.com/posts/2,335,0,0
+1783041200002,308,01-POST /posts - CSV用户数据驱动,201,Created,线程组3-CSV多列参数化 3-1,text,true,,1246,292,1,4,http://jsonplaceholder.typicode.com/posts,308,0,0
+1783041200135,297,03-GET /posts?userId=2 - 线程号参数化,200,OK,线程组2-函数助手实战 2-2,text,true,,28656,208,2,4,http://jsonplaceholder.typicode.com/posts,262,0,0
+1783041200087,479,01-GET /posts/5 - CSV参数化,200,OK,线程组1-CSV参数化 1-1,text,true,,1362,210,1,4,http://jsonplaceholder.typicode.com/posts/5,479,0,0
+1783041200236,454,01-GET /posts/45 - 随机帖子,200,OK,线程组2-函数助手实战 2-1,text,true,,1375,211,2,4,http://jsonplaceholder.typicode.com/posts/19,454,0,0
+1783041200433,375,04-DELETE /posts/3 - 随机删除,200,OK,线程组2-函数助手实战 2-2,text,true,,1101,296,2,4,http://jsonplaceholder.typicode.com/posts/1,375,0,0
+1783041200310,611,02-GET /posts?userId=_RND - 读取验证,200,OK,线程组3-CSV多列参数化 3-1,text,true,,28656,208,1,4,http://jsonplaceholder.typicode.com/posts,194,0,0
+1783041200690,334,02-POST /posts - __time+__counter组合,201,Created,线程组2-函数助手实战 2-1,text,true,,1242,292,2,3,http://jsonplaceholder.typicode.com/posts,334,0,0
+1783041200567,520,02-GET /posts/5/comments - CSV嵌套路径,200,OK,线程组1-CSV参数化 1-1,text,true,,2669,219,1,3,http://jsonplaceholder.typicode.com/posts/5/comments,519,0,0
+1783041201025,246,03-GET /posts?userId=1 - 线程号参数化,200,OK,线程组2-函数助手实战 2-1,text,true,,28656,208,2,2,http://jsonplaceholder.typicode.com/posts,217,0,0
+1783041200808,501,01-GET /posts/76 - 随机帖子,200,OK,线程组2-函数助手实战 2-2,text,true,,1366,211,2,2,http://jsonplaceholder.typicode.com/posts/55,501,0,0
+1783041201271,334,04-DELETE /posts/8 - 随机删除,200,OK,线程组2-函数助手实战 2-1,text,true,,1101,296,2,2,http://jsonplaceholder.typicode.com/posts/6,334,0,0
+1783041201310,376,02-POST /posts - __time+__counter组合,201,Created,线程组2-函数助手实战 2-2,text,true,,1242,292,1,1,http://jsonplaceholder.typicode.com/posts,376,0,0
+1783041201685,296,03-GET /posts?userId=2 - 线程号参数化,200,OK,线程组2-函数助手实战 2-2,text,true,,28656,208,1,1,http://jsonplaceholder.typicode.com/posts,263,0,0
+1783041201982,375,04-DELETE /posts/5 - 随机删除,200,OK,线程组2-函数助手实战 2-2,text,true,,1105,296,1,1,http://jsonplaceholder.typicode.com/posts/5,375,0,0
