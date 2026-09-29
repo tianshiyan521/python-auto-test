@@ -58,6 +58,13 @@ allure-report/
 allure-results/
 test_results.db
 
+# JMeter 自动生成的 HTML 报告（每个约 3MB，内置 jQuery/FontAwesome，纯产物可随时重跑）
+jmeter学习/*_report/
+jmeter学习/*_html/
+# JMeter 原始结果与日志（体积大且可重新生成）
+jmeter学习/*.jtl
+jmeter学习/*.log
+
 # 敏感配置（含真实网关地址与账号密码）
 # 提交 config.example.json 即可，真实 config.json 仅留本地
 config.json
