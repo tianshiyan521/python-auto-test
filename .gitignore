@@ -69,3 +69,7 @@ jmeter学习/*.log
 # 提交 config.example.json 即可，真实 config.json 仅留本地
 config.json
 **/config.json
+
+# 本地推送工具（含 Token 填写位，禁止入库）
+push.py
+推送.bat
